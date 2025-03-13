@@ -1,4 +1,12 @@
-import tanto
+try:
+  import tanto
+except ModuleNotFoundError:
+  import binaryninja
+  from os import path
+  from sys import path as python_path
+  python_path.append(path.abspath(path.join(binaryninja.user_plugin_path(), '../repositories/official/plugins')))
+  import tanto
+
 from tanto import helpers
 from tanto.tanto_view import TantoView
 
